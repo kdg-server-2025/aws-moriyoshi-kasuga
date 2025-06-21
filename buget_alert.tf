@@ -1,3 +1,9 @@
+variable "notification_email" {
+  description = "Email address to receive budget alerts"
+  type        = string
+}
+
+
 resource "aws_sns_topic" "budget_alert" {
   name = "budget-alert-topic"
 }
@@ -5,7 +11,7 @@ resource "aws_sns_topic" "budget_alert" {
 resource "aws_sns_topic_subscription" "email" {
   topic_arn = aws_sns_topic.budget_alert.arn
   protocol  = "email"
-  endpoint  = "moriyoshi.kasuga1218@gmail.com"
+  endpoint  = var.notification_email
 }
 
 locals {
