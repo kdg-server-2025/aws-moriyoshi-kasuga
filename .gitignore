@@ -1,2 +1,5 @@
 **/.terraform/*
 terraform.tfvars
+.temp_files/*
+function/bootstrap
+response.json
